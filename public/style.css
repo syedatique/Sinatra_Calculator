@@ -1,0 +1,13 @@
+body{
+  background-image: none;
+  background-color: #E3CAA1;
+  text-align: center;
+}
+
+ul{
+  list-style-type: none;
+}
+
+li {
+  font-size: 150%;
+}
