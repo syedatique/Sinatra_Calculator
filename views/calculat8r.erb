@@ -6,27 +6,19 @@
 
 
   <form method="get" action="/calculat8r">
-    <input type="text" name="first_number" placeholder="0" value="<%= @first_number %>">
-    <!-- <input type="text" name="operator" placeholder="+" value="<%= @operator %>"> -->
+    <input type="float" name="first_number" placeholder="first_number" step="0.01">
+
     <select name="operator" value="<%= @operator %>">
-      <option value="+">+</option>
-      <option value="-">-</option>
-      <option value="*">*</option>
-      <option value="/">/</option>
-      <option value="**">**</option>
-      <option value="sqrt">sqrt</option>
+      <option value="+" <%= 'selected = "selected"' if @operator=="+" %>>+</option>
+      <option value="-" <%= 'selected = "selected"' if @operator=="-" %>>-</option>
+      <option value="*" <%= 'selected = "selected"' if @operator=="*" %>>*</option>
+      <option value="/" <%= 'selected = "selected"' if @operator=="/" %>>/</option>
+      <option value="**" <%= 'selected = "selected"' if @operator=="**" %>>**</option>
+      <option value="sqrt" <%= 'selected = "selected"' if @operator=="sqrt" %>>sqrt</option>
     </select>
-    <input type="text" name="second_number" placeholder="0" value="<%= @second_number %>">
+
+    <input type="float" name="second_number" placeholder="second_number">
+
     <button>CALCULATE!</button>
   </form>
 
-
-
-
-
-
-
-
-  <input type="float" name="second_number" placeholder= "second_number" step="0.01" >
-  <button> CALCULATE !!!</button>
-</form>
