@@ -3,7 +3,7 @@
 <p> (m)iles to kilometers, (f)eet to meters, (i)nches to centimeters, OR (k)ilometers to miles, m(e)ters to feet, (c)entimeters to inches: </p>
 
   <form method="get" action="/measurement_calc">
-    <input type="float" name="@measure" placeholder="0" step="0.01">
+    <input type="float" name="measure" placeholder="0" step="0.01">
 
     <select name="operator" value="<%= @operator %>">
       <option value="m" <%= 'selected = "selected"' if @operator=="m" %>>miles_to_kilometer</option>

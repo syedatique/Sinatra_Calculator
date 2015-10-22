@@ -12,24 +12,26 @@ end
 
 get '/age_calculator' do
 
-  @dob = params[:dob].to_s
-  @dob = Date.parse(@dob)
-
- # binding.pry
- today = Date.toda      #.strftime("%d/%m/%Y")
-  case 
-  when @dob.year > today.year
-   @result = "You are from FUTURE!!"
-  when @dob.year == today.year
-   @result = "Your age is: #{0}"
-  when @dob.year < today.year
-    if @dob.month > today.month || (@dob.month == today.month && @dob.day > today.day)
-      age = today.year - @dob.year - 1
-    else 
-      age = today.year - @dob.year
-    end
-  @result = "Your age is : #{age}"
+  if params[:dob]
+    @dob = Date.parse(params[:dob])
+    today = Date.today     #.strftime("%d/%m/%Y")
+     case 
+     when @dob.year > today.year
+      @result = "You are from FUTURE!!"
+     when @dob.year == today.year
+      @result = "Your age is: #{0}"
+     when @dob.year < today.year
+       if @dob.month > today.month || (@dob.month == today.month && @dob.day > today.day)
+         age = today.year - @dob.year - 1
+       else 
+         age = today.year - @dob.year
+       end
+     @result = "Your age is : #{age}"
+     end
   end
+  
+
+ 
 
 erb :age_calculator
 end
@@ -59,14 +61,13 @@ get '/calculat8r' do
 end
 
 get '/sleeps' do
+  if params[:dates]
+    @dates = Date.parse(params[:dates])
 
-  @d = params[:dates].to_s
-  @dates = Date.parse(@d)
+    christmas = Date.new(@dates.year, 12, 25)
+    @sleeps = (christmas - @dates).to_i
 
-  christmas = Date.new(@dates.year, 12, 25)
-  @sleeps = (christmas - @dates).to_i
-
-  @result = case @sleeps
+    @result = case @sleeps
     when 0
       "OMG! Check your stockings! Santa's been!!"
     when 1..10
@@ -84,13 +85,16 @@ get '/sleeps' do
     else
       "Oh noes! You missed it! Gotta wait until next year now :-("
     end
+  end
 
-erb :sleeps
+  erb :sleeps
 end
 
 get '/measurement_calc' do
   @measure = params[:measure].to_f
+  @operator = params[:operator]
 
+  # binding.pry
   @result = case @operator
     when "m"
       @measure * 1.6093
@@ -112,7 +116,8 @@ end
 
 get '/volume_calc' do
 
-  @vol_cal = params[:vol_cal]
+  @vol_cal = params[:vol_cal].to_f
+  @operator = params[:operator]
 
   @result = case @operator
   when 'c'
