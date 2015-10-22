@@ -1,5 +1,8 @@
 body{
-  background-image: none;
+  background-image: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRvoDre74UmlDvsYdnxlC4WUq6HY52LFW21uBVGCgrDBfYchAUo");
+  background-position: right top;
+  background-repeat: no-repeat;
+  margin-right: 500px;
   background-color: #E3CAA1;
   text-align: center;
 }
@@ -9,5 +12,5 @@ ul{
 }
 
 li {
-  font-size: 150%;
+  font-size: 200%;
 }

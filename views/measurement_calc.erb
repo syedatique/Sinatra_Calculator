@@ -2,23 +2,21 @@
 <p> Which conversion do you want to do? </p><br>
 <p> (m)iles to kilometers, (f)eet to meters, (i)nches to centimeters, OR (k)ilometers to miles, m(e)ters to feet, (c)entimeters to inches: </p>
 
-
-<% if @result %>
-<h1>The result is <%= @result %></h1>
-<% end %>
-
-
   <form method="get" action="/measurement_calc">
-    <input type="float" name="measure" placeholder="0" step="0.01">
+    <input type="float" name="@measure" placeholder="0" step="0.01">
 
     <select name="operator" value="<%= @operator %>">
-      <option value="m" <%= 'selected = "selected"' if @operator=="m" %>>m</option>
-      <option value="f" <%= 'selected = "selected"' if @operator=="f" %>>f</option>
-      <option value="i" <%= 'selected = "selected"' if @operator=="i" %>>i</option>
-      <option value="k" <%= 'selected = "selected"' if @operator=="k" %>>k</option>
-      <option value="e" <%= 'selected = "selected"' if @operator=="e" %>>e</option>
-      <option value="c" <%= 'selected = "selected"' if @operator=="c" %>>c</option>
+      <option value="m" <%= 'selected = "selected"' if @operator=="m" %>>miles_to_kilometer</option>
+      <option value="f" <%= 'selected = "selected"' if @operator=="f" %>>feet_to_meter</option>
+      <option value="i" <%= 'selected = "selected"' if @operator=="i" %>>inches_to_centimeters</option>
+      <option value="k" <%= 'selected = "selected"' if @operator=="k" %>>kilometers_to_miles</option>
+      <option value="e" <%= 'selected = "selected"' if @operator=="e" %>>meters_to_feet</option>
+      <option value="c" <%= 'selected = "selected"' if @operator=="c" %>>centimeters_to_inches</option>
     </select>
 
     <button> Convert </button>
   </form>
+ 
+ <% if @result %>
+  <h1>The result is <%= @result %></h1>
+  <% end %>

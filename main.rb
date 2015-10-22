@@ -16,8 +16,7 @@ get '/age_calculator' do
   @dob = Date.parse(@dob)
 
  # binding.pry
- today = Date.today
-# .strftime("%d/%m/%Y")
+ today = Date.toda      #.strftime("%d/%m/%Y")
   case 
   when @dob.year > today.year
    @result = "You are from FUTURE!!"
@@ -60,8 +59,9 @@ get '/calculat8r' do
 end
 
 get '/sleeps' do
-  @dates = params[:dates].to_s
-  @dates = Date.parse(@dates)
+
+  @d = params[:dates].to_s
+  @dates = Date.parse(@d)
 
   christmas = Date.new(@dates.year, 12, 25)
   @sleeps = (christmas - @dates).to_i
@@ -70,17 +70,17 @@ get '/sleeps' do
     when 0
       "OMG! Check your stockings! Santa's been!!"
     when 1..10
-      "Only #{sleeps} sleep#{'s' unless sleeps == 1} to go. It's getting close!"
+      "Only #{@sleeps} sleep#{'s' unless @sleeps == 1} to go. It's getting close!"
     when 11..24
-      "The advent calendar is getting a workout with only #{sleeps} sleeps to go."
+      "The advent calendar is getting a workout with only #{@sleeps} sleeps to go."
     when 25..54
-      "#{sleeps} sleeps until Christmas. Better get the cards for Australian friends written."
+      "#{@sleeps} sleeps until Christmas. Better get the cards for Australian friends written."
     when 55..100
-      "#{sleeps} sleeps. Check back soon."
+      "#{@sleeps} sleeps. Check back soon."
     when 101..250
-      "You're too keen. I feel almost mean telling you there's #{sleeps} sleeps still left."
+      "You're too keen. I feel almost mean telling you there's #{@sleeps} sleeps still left."
     when 251..366
-      "It's hardly even Easter! There still #{sleeps} sleeps until Christmas."
+      "It's hardly even Easter! There still #{@sleeps} sleeps until Christmas."
     else
       "Oh noes! You missed it! Gotta wait until next year now :-("
     end
@@ -89,24 +89,24 @@ erb :sleeps
 end
 
 get '/measurement_calc' do
-  @measure = params[:measure]
+  @measure = params[:measure].to_f
 
-    @result = @measure * case @operator
-    when 'm'
-      1.6093
+  @result = case @operator
+    when "m"
+      @measure * 1.6093
     when 'f'
-      0.3048
+      @measure * 0.3048
     when 'i'
-      2.54
+      @measure * 2.54
     when 'k'
-      0.6214
+      @measure * 0.6214
     when 'e'
-      3.2808
+      @measure * 3.2808
     when 'c'
-      0.3937
+      @measure * 0.3937
     end
 
-erb :measurement_calc
+  erb :measurement_calc
 end
 
 
